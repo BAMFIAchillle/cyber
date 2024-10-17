@@ -3,52 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <title>SPA SDK Sample</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
   </head>
-
   <body>
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.20/auth0-spa-js.production.js"></script>
-    <script src="js/app.js"></script>
-
     <h2>SPA Authentication Sample</h2>
     <p>Welcome to our page!</p>
-    <button id="btn-login" disabled="true" onclick="login()">Log in</button>
-    <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
-	<!-- Add a container to hold the response from the call -->
+    <button id="btn-login" disabled onclick="login()">Log in</button>
+    <button id="btn-logout" disabled onclick="logout()">Log out</button>
 
-  <div class="hidden" id="gated-content">
-    <p>
-      You're seeing this content because you're currently
-      <strong>logged in</strong>.
-    </p>
-    <label>
-      Access token:
-      <pre id="ipt-access-token"></pre>
-    </label>
-    <label>
-      User profile:
-      <pre id="ipt-user-profile"></pre>
-    </label>
-	<label>
-	  State:
-	  <pre id="ipt-state"></pre>
-	</label>
-  </div>
-  <!-- CSRF CHALLENGE
-  user profile
-	copy the form that changes the username
-		select form action="./profile" => copy => outer html
-	change the form action url
-	NB: this works when the attacker website is not under https 
-	currently not working due to default SameSite=Lax from browsers
-	
-	optionally: set <input type="hidden" name="username" value="CSRF"/>
-	
-<form action="http://localhost:3000/profile" method="POST">
-  <input name="username" value="CSRF"/>
-  <input type="submit"/>
-</form>
-<script>document.forms[0].submit.click();</script>-->
+    <button id="btn-call-api" disabled onclick="callApi()">
+      Call Api
+    </button>
+    <!-- Add a container to hold the response from the call -->
+    <pre id="api-call-result"></pre>
 
+    <div class="hidden" id="gated-content">
+      <p>
+        You're seeing this content because you're currently
+        <strong>logged in</strong>.
+      </p>
+      <label>
+        Access token:
+        <pre id="ipt-access-token"></pre>
+      </label>
+      <label>
+        User profile:
+        <pre id="ipt-user-profile"></pre>
+      </label>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
   </body>
 </html>
